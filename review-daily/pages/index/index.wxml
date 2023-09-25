@@ -1,0 +1,17 @@
+<view class="{{theme}} container">
+
+  <!-- 中间内容 -->
+  <swiper class="cards-wrapper" previous-margin="68rpx" next-margin="70rpx">
+    <block wx:for="{{cards}}" wx:key="item">
+      <swiper-item class="swiper-item">
+        <view class="card" data-randomId="{{item.id}}">
+          <view class="body"><text user-select>{{item.body}}</text></view>
+          <view class="time-banner">
+            <view class="dateTime">{{item.dateTime}}</view>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+</view>

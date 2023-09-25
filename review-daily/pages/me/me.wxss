@@ -1,0 +1,132 @@
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.nickname-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nickname {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  font-size: 50rpx;
+  color: #999;
+  text-align: center;
+  height: 60rpx;
+}
+
+.signature {
+  font-size: 15px;
+  color: gray;
+  line-height: 1.5;
+  margin: 5rpx 30rpx 5rpx 30rpx;
+  text-align: center;
+}
+
+.avatar-wrapper::after {
+  border-style: none;
+  border: none;
+  outline: none;
+}
+
+.avatar-image {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.divider {
+  width: 100%;
+  height: 3px;
+  background-color: rgb(214, 214, 214);
+  margin-bottom: 20rpx;
+}
+
+.menu {
+  display: flex;
+  margin-bottom: 8rpx;
+}
+
+.menu-item {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-size: 30rpx;
+}
+
+.menu-count {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.welcome-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.login-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 300px;
+  height: 40px;
+  color: rgb(255, 255, 255);
+  background-color: #0053ac;
+  border-radius: 20px;
+  align-items: center;
+  align-content: center;
+}
+
+.input-box {
+  margin: 10px auto;
+  text-align: center; /* 输入框居中对齐 */
+}
+
+.login-button-text {
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+}
+
+.vertical-space {
+  height: 20rpx; /* 调整垂直间距的高度，单位可以根据需求调整 */
+}
+
+.bottom-tips {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+}

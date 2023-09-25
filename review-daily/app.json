@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/me/me"
+  ],
+  "window": {
+    "backgroundColor": "#F8F8F8",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 40
+  },
+  "tabBar": {
+    "color": "#c2c2c2",
+    "selectedColor": "#000",
+    "backgroundColor": "#fff",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "imgs/tabs/L-home-unselected.png",
+        "selectedIconPath": "imgs/tabs/L-home-selected.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我",
+        "iconPath": "imgs/tabs/L-me-unselected.png",
+        "selectedIconPath": "imgs/tabs/L-me-selected.png"
+      }
+    ]
+  },
+
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取用户信息"
+    }
+  }
+
+}

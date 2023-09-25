@@ -1,0 +1,48 @@
+<view class="container" catchtap="onHideAreaTap">
+
+  <view class="profile" catchtap="onLogin">
+    <view class="avatar">
+      <button class="avatar-wrapper">
+        <image class="avatar-image" src="/imgs/head-thinking.png"></image>
+      </button>
+    </view>
+    <view class="nickname-signature">
+      <input class="nickname" placeholder="{{username?username:'未登入'}}" />
+      <text class="signature">"就这样忘记吧，怎么能忘记呢" </text>
+    </view>
+  </view>
+
+  <view class="menu">
+    <view class="menu-item">
+      <view class="menu-count">{{notesCount}}</view>笔记
+    </view>
+    <view class="menu-item">
+      <view class="menu-count">0</view>标签
+    </view>
+    <view class="menu-item">
+      <view class="menu-count">0</view>收藏
+    </view>
+    <view class="menu-item">
+      <view class="menu-count">0</view>喜欢
+    </view>
+  </view>
+  <view class="divider"></view>
+</view>
+
+<!-- 登录框 -->
+<view class="login-container" wx:if="{{showLoginBox}}">
+  <view class="login-box">
+    <view class="welcome-title">Exchange Login</view>
+    <form catchsubmit="login">
+      <view class="input-box">
+        <input placeholder="{{username?username:'请输入用户名'}}" model:value="{{inputUsername}}" bindinput="inputUsernameHandler" auto-focus="true" />
+        <view class="vertical-space"></view> <!-- 添加垂直间距 -->
+        <input type="password" placeholder="请输入密码" model:value="{{inputPassword}}" bindinput="inputPasswordHandler" auto-focus="true" />
+      </view>
+      <button formType="submit" class="login-button">
+        <text class="login-button-text">登录</text>
+      </button>
+    </form>
+    <view class="bottom-tips"><a href="#">无用户协议</a>、<a href="#">不涉及隐私</a></view>
+  </view>
+</view>
