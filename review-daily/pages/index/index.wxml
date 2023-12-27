@@ -9,6 +9,12 @@
           <view class="time-banner">
             <view class="dateTime">{{item.dateTime}}</view>
           </view>
+
+          <!-- Conditionally display the image if images is not empty -->
+          <block wx:if="{{item.images && item.images.length > 0}}">
+            <image class="bottom-right-image" mode="aspectFit" src="/imgs/bottom-right.png" bindtap="showImagePreview" data-index="{{index}}" data-images="{{item.images}}"></image>
+          </block>
+
         </view>
       </swiper-item>
     </block>

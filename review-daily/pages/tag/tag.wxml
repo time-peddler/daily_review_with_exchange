@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="tag-notice">
+    <text></text>
+  </view>
+  <view class="tag-area">
+    <!-- 标签选择区域 -->
+    <view class="tag-container" wx:for="{{tags}}" wx:key="index" data-index="{{index}}" bindtap="tagSelected">
+      <view class="tag {{item.selected ? 'selected' : ''}}">{{item.name}} ({{item.count}})</view>
+    </view>
+    <view class="tag {{allSelected? 'selected' : ''}}" bindtap="onSelectAll">all {{notesCount}}</view>
+  </view>
+
+
+  <!-- 已选择标签区域 -->
+  <!-- <view class="selected-tags">
+    <text wx:for="{{selectedTags}}" wx:key="index" class="selected-tag">{{item.name}}</text>
+  </view> -->
+
+
+
+</view>

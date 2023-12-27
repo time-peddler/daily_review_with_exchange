@@ -1,5 +1,6 @@
 const app = getApp()
 const ews = require('../../utils/ews')
+
 Page({
 
   /**
@@ -7,8 +8,19 @@ Page({
    */
   data: {
     showLoginBox: false, // 控制显示登录框或登录成功界面
-    username: app.globalData.username,
-    password: app.globalData.password
+    notesCount: 0,
+    lastTapTime: 0,
+    delay: 300 // 设置延迟时间
+  },
+
+  onShow(options) {
+    const tags = wx.getStorageSync('tags');
+    this.setData({
+      username: app.globalData.username,
+      notesCount: wx.getStorageSync('notesCount'),
+      scales: wx.getStorageSync('scales'),
+      tagsCount: Object.keys(tags).length
+    })
   },
 
   onHideAreaTap: function () {
@@ -34,14 +46,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let that = this;
 
-    // 在页面加载时，将 app.globalData.notesCount 的值赋值给 data 中的 notesCount
-    that.setData({
-      notesCount: app.globalData.notesCount,
-    });
   },
-
 
   onLogin(options) {
     this.setData({
@@ -51,20 +57,31 @@ Page({
 
   // 点击登录按钮时触发
   login: function () {
+
     const {
       inputUsername,
       inputPassword
     } = this.data;
-
-    // 将数据同步到 storages 中
-    wx.setStorageSync('cached_username', inputUsername);
-    wx.setStorageSync('cached_password', inputPassword);
-    ews.login(inputUsername).then((status) => {
+    wx.setStorageSync('allSelected', true);
+    ews.login(inputUsername, inputPassword).then((status) => {
       if (status == "NoError") {
+        // 将数据同步到 storages 中
+        wx.setStorageSync('cached_username', inputUsername);
+        wx.setStorageSync('cached_password', inputPassword);
         wx.showToast({
           title: '登录成功',
           icon: 'success',
           duration: 2000, // 显示时间 2 秒
+        });
+        // 登录成功后获取数据
+        ews.fetchData().then(() => {
+          // 关闭登录框 并重新刷新该页面数据
+          this.setData({
+            showLoginBox: false,
+            username: wx.getStorageSync('cached_username'),
+            notesCount: wx.getStorageSync('notesCount'),
+            tagsCount: wx.getStorageSync('tags').length
+          });
         });
       } else {
         // 登录失败
@@ -74,11 +91,64 @@ Page({
           duration: 2000,
         });
       }
-    })
-    
-    // 关闭登录框
-    this.setData({
-      showLoginBox: false,
     });
   },
+
+
+  onTag: function (e) {
+    if (!this.data.username) {
+      wx.showToast({
+        title: '未登录',
+        icon: 'none',
+        duration: 2000
+      });
+    } else {
+      let currentTime = e.timeStamp;
+      let lastTime = this.data.lastTapTime;
+      if (currentTime - lastTime < this.data.delay) {
+        wx.navigateTo({
+          url: '/pages/tag/tag'
+        });
+      } else {
+        this.setData({
+          lastTapTime: currentTime // 单击事件，更新上次点击时间
+        });
+      }
+    }
+  },
+
+  onMore: function () {
+    this.showNumberPicker();
+  },
+
+  showNumberPicker: function () {
+    let that = this;
+    wx.showActionSheet({
+      alertText: "每次需要回顾的数量",
+      itemList: ['15', '20', '25', '30', '35', '40'],
+      success: function (res) {
+        if (!res.cancel) {
+          const scales = parseInt(res.tapIndex) * 5 + 15; // 计算出选择的数字
+          // console.log("选择的数字为: " + selectedNumber);
+          wx.setStorageSync('scales', scales)
+          that.setData({
+            scales
+          })
+        }
+      }
+    });
+  },
+
+  onNoteTap: function (e) {
+    let currentTime = e.timeStamp;
+    let lastTime = this.data.lastTapTime;
+    if (currentTime - lastTime < this.data.delay) {
+      ews.fetchData()
+    } else {
+      this.setData({
+        lastTapTime: currentTime // 单击事件，更新上次点击时间
+      });
+    }
+  },
+
 })

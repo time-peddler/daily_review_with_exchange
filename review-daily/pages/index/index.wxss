@@ -76,3 +76,11 @@
   color: #777;
   /* 灰色字体颜色，可以根据需要调整灰度程度 */
 }
+
+.bottom-right-image {
+  position: absolute;
+  bottom: 10rpx; /* 调整图片距离底部的距离 */
+  right: 10rpx; /* 调整图片距离右侧的距离 */
+  width: 40rpx; /* 调整图片宽度 */
+  height: 40rpx; /* 调整图片高度 */
+}

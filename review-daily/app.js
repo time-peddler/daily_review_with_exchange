@@ -57,6 +57,7 @@ App({
       });
     });
     // 版本更新部分结束------
+
   },
   // 如果找不到页面就跳转到首页
   onPageNotFound(res) {
@@ -104,6 +105,22 @@ App({
     notesCount: 0,
     ewsUrl: 'https://outlook.office365.com/EWS/Exchange.asmx',
     username: wx.getStorageSync('cached_username'),
-    password: wx.getStorageSync('cached_password')
+    password: wx.getStorageSync('cached_password'),
+    cards: [{
+        id: '0001',
+        body: '#knowledge 封狼居胥，指西汉大将霍去病登狼居胥山筑坛祭天以告成功之事，出自于《汉书·霍去病传》，后来封狼居胥成为中华民族武将的最高荣誉之一。封狼居胥的主人公为霍去病，而非卫青。',
+        dateTime: '1949年10月01日 15:00'
+      },
+      {
+        id: '0002',
+        body: '#history 周亚夫平定七国叛乱，文景之治—>文帝安抚吴王刘濞，景帝听从晁错“削藩策”，引起吴王联合齐国叛乱，景帝腰斩晁错拟平息叛乱—>苏轼的《晁错论》，最终由周亚夫平定。',
+        dateTime: '1037年1月8日 12:55'
+      },
+      {
+        id: '0003',
+        body: '#vocabulary Hong Kong’s local currency is pegged to the U.S. dollar. 港币与美元挂钩',
+        dateTime: '2038年01月01日 00:00'
+      }
+    ],
   },
 });

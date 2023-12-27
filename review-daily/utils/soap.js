@@ -1,8 +1,6 @@
 // utils/soap.js
 const app = getApp();
 const url = app.globalData.ewsUrl;
-const username = wx.getStorageSync('cached_username');
-const password = wx.getStorageSync('cached_password');
 
 function base64Encode(str) {
   const charList = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
@@ -29,7 +27,11 @@ function base64Encode(str) {
 }
 
 
-async function sendSoapRequest(soapMessage) {
+async function sendSoapRequest(soapMessage, username = '', password = '') {
+  if (!username && !password) {
+    username = wx.getStorageSync('cached_username');
+    password = wx.getStorageSync('cached_password');
+  }
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
@@ -40,7 +42,6 @@ async function sendSoapRequest(soapMessage) {
         'Authorization': 'Basic ' + base64Encode(`${username}:${password}`),
       },
       success: (res) => {
-        // console.log(res.data);
         if (res.statusCode === 200) {
           resolve(res.data);
         } else {

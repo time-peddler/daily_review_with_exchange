@@ -13,17 +13,17 @@
   </view>
 
   <view class="menu">
-    <view class="menu-item">
-      <view class="menu-count">{{notesCount}}</view>笔记
+    <view class="menu-item" bindtap="onNoteTap">
+      <view class="menu-count">{{notesCount?notesCount:0}}</view>笔记
     </view>
-    <view class="menu-item">
-      <view class="menu-count">0</view>标签
+    <view class="menu-item" bindtap="onTag">
+      <view class="menu-count">{{tagsCount?tagsCount:0}}</view>标签
+    </view>
+    <view class="menu-item" bindtap="onMore">
+      <view class="menu-count">{{scales?scales:15}}</view>酌盈
     </view>
     <view class="menu-item">
       <view class="menu-count">0</view>收藏
-    </view>
-    <view class="menu-item">
-      <view class="menu-count">0</view>喜欢
     </view>
   </view>
   <view class="divider"></view>
@@ -46,3 +46,4 @@
     <view class="bottom-tips"><a href="#">无用户协议</a>、<a href="#">不涉及隐私</a></view>
   </view>
 </view>
+

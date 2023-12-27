@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/tag/tag"
   ],
   "window": {
     "backgroundColor": "#F8F8F8",
@@ -16,7 +17,8 @@
     "color": "#c2c2c2",
     "selectedColor": "#000",
     "backgroundColor": "#fff",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "imgs/tabs/L-home-unselected.png",
@@ -30,11 +32,9 @@
       }
     ]
   },
-
   "permission": {
     "scope.userLocation": {
       "desc": "获取用户信息"
     }
   }
-
 }

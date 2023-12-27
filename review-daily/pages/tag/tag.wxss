@@ -1,0 +1,48 @@
+.container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  margin: 13rpx;
+}
+
+.tag-notice {
+ margin: 7rpx 1rpx 7rpx 13rpx;
+ font-size: large;
+}
+
+.tag-area {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-container {
+  display: inline-block;
+  margin: 3rpx;
+}
+
+.tag {
+  padding: 8rpx;
+  border: 3rpx solid #ccc;
+  border-radius: 3rpx;
+  margin: 3rpx;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.selected {
+  background-color: #333;
+  color: #fff;
+}
+
+.selected-tags {
+  margin-top: 20px;
+}
+
+.selected-tag {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+}
